@@ -1,11 +1,9 @@
+const {criarCarrinhoService, listarCarrinhoService, limparCarrinhoService} = require('../services/cartService.js')
 
-async function listarItens() {
+async function listarItens(req, res) {
     const {id} = req.params
    try {
-    const result = await client.query(
-        'SELECT * FROM cart_item WHERE cart_id = $1',
-         [id]
-    )
+    const result = await listarCarrinhoService(id)
     res.status(200).json(result.rows)
    } catch (error) {
         console.log("Erro ao listar itens do carrinho", error)
@@ -13,24 +11,24 @@ async function listarItens() {
    }
 }
 
-async function criarCarrinho() {
+async function criarCarrinho(req, res) {
     const {user_id} = req.body 
     try {
-        await client.query(
-            'INSERT INTO cart (user_id) VALUES ($1)', 
-            [user_id]
-        )
+        await criarCarrinhoService(user_id)
         res.status(201).json({message: 'Carrinho criado com sucesso'})
     } catch (error) {
         console.log("Erro ao criar carrinho", error)
-        res.status(500).json({erro: "Erro ao criar carrinho", details: error.message })
+        res.status(500).json({
+            erro: "Erro ao criar carrinho",
+            details: error.message
+         })
     }
 }
-async function deletarCarrinho() {
+async function limparCarrinho(req, res) {
     const {id} = req.params
      try {
-        await client.query('DELETE FROM cart_item WHERE cart_id = $1', [id])
-        res.status(200).json({mensage: "Carrinho limpo"})
+        await limparCarrinhoService(id)
+        res.status(200).json({menssage: "Carrinho limpo"})
      } catch (error) {
         console.log("Erro ao limpar carrinho", error)
         res.status(500).json({erro: "Erro ao limpar carrinho",
@@ -38,4 +36,4 @@ async function deletarCarrinho() {
      }
 }
 
-module.exports = {listarItens, criarCarrinho, deletarCarrinho}
+module.exports = { criarCarrinho, listarItens, limparCarrinho}

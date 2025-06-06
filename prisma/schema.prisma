@@ -27,6 +27,17 @@ model CartItem {
   quantity Int @default(1)
   cart Cart @relation(fields: [cart_id], references: [id], onDelete: Cascade)
 }
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  firstname String 
+  surname String
+  password String 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+
+}
 
 
          
