@@ -1,9 +1,9 @@
 const {registrarUsuario, loginUsuario} = require('../services/userService')
 
 async function registrar(req, res) {
-    const { firstName, surname, email, password } = req.body;
+    const { firstname, surname, email, password } = req.body;
     try {
-        const user = await registrarUsuario(firstName, surname, email, password);
+        const user = await registrarUsuario(firstname, surname, email, password);
         res.status(201).json({ message: 'Usuário registrado com sucesso', user });
     } catch (error) {
         res.status(400).json({

@@ -4,17 +4,17 @@ const {criarUsuario, encontrarUsuario }= require('../repositories/userRepository
 
 const SECRET = process.env.JWT_SECRET
 
-async function registrarUsuario(firstName, surname, email, password) {
+async function registrarUsuario(firstname, surname, email, password) {
 
  const usuarioExiste = await encontrarUsuario(email)
  if(usuarioExiste){
     throw new Error('email já cadstrado');
  }
  const senhaCriptografada = await bcrypt.hash(password, 10)
- const user = await criarUsuario ({firstName, surname, email, password: senhaCriptografada})
+ const user = await criarUsuario ({firstname, surname, email, password: senhaCriptografada})
  return {
     id: user.id,
-    firstName: user.firstName,
+    firstname: user.firstname,
     surname: user.surname,
     email: user.email
  }
@@ -33,7 +33,7 @@ async function loginUsuario(email, password) {
     }
     const token = jwt.sign ({id: user.id}, SECRET , {expiresIn: '1h'})
     return {token, user: {id: user.id, 
-        firstName: user.firstName,
+        firstname: user.firstname,
          surname: user.surname,
          email: user.email
         }}
