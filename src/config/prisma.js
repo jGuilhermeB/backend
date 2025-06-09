@@ -16,20 +16,20 @@ const prisma = new PrismaClient()
 // testConnection()
 
 
-async function teste() {
-  try {
-    const user = await prisma.user.findUnique({
-      where: { email: 'teste@teste.com' }
-    });
-    console.log('Usuário encontrado:', user);
-  } catch (error) {
-    console.error('Erro no Prisma:', error);
-  } finally {
-    await prisma.$disconnect();
-  }
-}
+// async function teste() {
+//   try {
+//     const user = await prisma.user.findUnique({
+//       where: { email: 'teste@teste.com' }
+//     });
+//     console.log('Usuário encontrado:', user);
+//   } catch (error) {
+//     console.error('Erro no Prisma:', error);
+//   } finally {
+//     await prisma.$disconnect();
+//   }
+// }
 
-teste();
+// teste();
 
 
 module.exports = prisma
