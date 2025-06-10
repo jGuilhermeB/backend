@@ -6,10 +6,14 @@ const { registrar,login } = require('../controllers/userController.js');
 // router.use (authMiddleware)
 
 router.post('/register', registrar)
-    
+// #swagger.summary = 'registra novo  usuario' 
+// #swagger.description = 'cria novo usuario no sistema com nome, sobrenome, email e senha válidos'    
 
 router.post('/login', login) 
-
+// #swagger.summary = 'registra um novo usuario' 
+// #swagger.descripition = 'autentica user com email e senha'
+// #swagger.responses[200] = {description: ''login efetuado com sucesso}
+// #swagger.responses[401] = {description:'não autorizado'}    
 
 
 

@@ -1,10 +1,10 @@
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
 const express = require('express');
 const cartRoute = require('./src/routes/cartRoute.js')
 const cartItemRoute = require('./src/routes/cartItemRoute.js')
 const userRoute = require ('./src/routes/userRoute.js')
-const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('./swagger-output.json');
 require('dotenv').config()
 
 
@@ -15,8 +15,8 @@ app.use(express.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.get('/', (req, res) => {
-   // #swagger.tags = ['documentacao']
    // #swagger.summary = 'redireciona para documentaão API'
+   // #swagger.tags = ['documentação']
    res.redirect('/docs')
 })
 
@@ -35,5 +35,5 @@ app.use('/v1/user',
    userRoute)
 
 app.listen(port, () => {
-    console.log(`API documentation:http://localhost:${port}/docs  `)
+    console.log(`API documentation:http://localhost:${port}/docs`)
 })

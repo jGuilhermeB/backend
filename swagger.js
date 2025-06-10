@@ -3,8 +3,8 @@ const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' });
 const doc = {
     info: {
         version: "1.0.0",
-        title: "API node.js com express",
-        description: "Uma api de exemplo documentada com swagger"
+        title: "My API",
+        description: "Some description..."
     },
     servers: [
         {
@@ -54,5 +54,5 @@ const outputFile = './swagger-output.json';
 const endpointsFiles = ['./index.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require('./index.js');           // Your project's root file
+    require('./index');           // Your project's root file
 });

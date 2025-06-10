@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "API node.js com express",
-    "description": "Uma api de exemplo documentada com swagger"
+    "title": "My API",
+    "description": "Some description..."
   },
   "servers": [
     {

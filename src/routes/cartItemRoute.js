@@ -5,13 +5,14 @@ const authMiddleware= require ('../middleware/authMiddleware.js')
 router.use (authMiddleware)
 
 
-//insere itens no carrinho
+
+// #swagger.summary = 'Insere itens no carrinho'
 router.post('/', inserirItens)
 
- //Alterar a quantidade item carrinho
+// #swagger.summary = 'altera a quantidade de itens no carrinho'
 router.put('/:id', alterarItens) 
 
-//deleta item
+// #swagger.summary = 'altera a quantidade de itens no carrinho'
 router.delete('/:id', deletarItens) 
 
 
