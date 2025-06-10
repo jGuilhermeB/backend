@@ -9,7 +9,7 @@ router.use (authMiddleware)
 router.post('/', inserirItens)
 
  //Alterar a quantidade item carrinho
-router.put('//:id', alterarItens) 
+router.put('/:id', alterarItens) 
 
 //deleta item
 router.delete('/:id', deletarItens) 

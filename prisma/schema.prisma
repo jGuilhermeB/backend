@@ -18,7 +18,9 @@ model Cart {
   user_id Int
   created_at DateTime @default(now())
   items CartItem[]
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
+
 
 model CartItem {
   id Int @id @default(autoincrement())
@@ -35,7 +37,7 @@ model User {
   password String 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-
+  cart  Cart[]
 
 }
 
