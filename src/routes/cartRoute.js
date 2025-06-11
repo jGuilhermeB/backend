@@ -2,14 +2,14 @@ const {  criarCarrinho, listarItens, limparCarrinho} = require('../controllers/c
 const router = require('express').Router();
 const authMiddleware= require ('../middleware/authMiddleware.js')
  
-router.use (authMiddleware)
+router.use(authMiddleware)
 //listar carrinho itens
-router.get('/:id',listarItens)
+router.get('/:id/itens',listarItens)
 
 //cria carrinho
 router.post('/', criarCarrinho)
 
 //Deleta todos os itens do carrinho
-router.delete('/:id', limparCarrinho)
+router.delete('/:id/itens', limparCarrinho)
 
 module.exports = router;

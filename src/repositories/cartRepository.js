@@ -9,8 +9,11 @@ function cartCheck(cart_id) {
     })
 }
 
-function listarCarrinhoItensRepository(cart_id, user) {
+function listarCarrinhoItensRepository(cart_id, user,page,limit) {
+    console.log('Dados recebidos para listar:', { cart_id, user, page, limit });
     return prisma.cartItem.findMany({
+        skip:(page-1)*limit,
+        take: limit,
             where: {
                 cart: {
                   id: Number(cart_id),

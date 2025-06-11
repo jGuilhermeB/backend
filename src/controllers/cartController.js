@@ -2,14 +2,19 @@
 const {listarCarrinhoService, criarCarrinhoService ,limparCarrinhoService} = require('../services/cartService.js')
 
 async function listarItens(req, res) {
+    const {page, limit} = req.query
     const user = req.user.id
     const {id} = req.params
+    console.log('Chequei até aqui')
+
+    const pageNumber = parseInt(page)
+    const limitNumber = parseInt(limit)
    try {
-        const result = await listarCarrinhoService(id, user)
+        const result = await listarCarrinhoService(id, user, pageNumber, limitNumber)
         res.status(200).json(result)
    } catch (error) {
         console.log("Erro ao listar itens do carrinho", error)
-        res.status(500).json({error: 'Erro ao buscar itens'})
+        res.status(500).json({error: 'Erro ao buscar itens', details: error.message})
    }
 }
 

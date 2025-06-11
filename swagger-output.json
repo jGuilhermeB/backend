@@ -13,15 +13,19 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "documentação"
+        ],
+        "summary": "redireciona para documentaão API",
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/v1/cart/{id}": {
+    "/v1/cart/{id}/itens": {
       "get": {
         "tags": [
           "carrinho"
@@ -32,6 +36,20 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -228,7 +246,8 @@
         "tags": [
           "usuario"
         ],
-        "description": "",
+        "summary": "registra novo usuario",
+        "description": "cria novo usuario no sistema com nome, sobrenome, email e senha válidos",
         "responses": {
           "201": {
             "description": "Created"
@@ -267,6 +286,7 @@
         "tags": [
           "usuario"
         ],
+        "summary": "registra um novo usuario",
         "description": "",
         "responses": {
           "200": {

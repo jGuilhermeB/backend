@@ -5,23 +5,24 @@ const express = require('express');
 const cartRoute = require('./src/routes/cartRoute.js')
 const cartItemRoute = require('./src/routes/cartItemRoute.js')
 const userRoute = require ('./src/routes/userRoute.js')
+const cors = require('cors')
 require('dotenv').config()
 
 
 const app = express();
 const port = process.env.PORT;
 
+app.use =cors({
+   originhttp: "localhost:5173"
+})
+
 app.use(express.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.get('/', (req, res) => {
-   // #swagger.summary = 'redireciona para documentaão API'
-   // #swagger.tags = ['documentação']
+   /* #swagger.summary = 'redireciona para documentaão API'
+   #swagger.tags = ['documentação'] */
    res.redirect('/docs')
-})
-
-app.get('/', (req, res) => {
-   res.send('Seja bem-vindo') 
 })
 
 app.use('/v1/cart',
