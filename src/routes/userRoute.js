@@ -13,7 +13,7 @@ router.post('/register',
 router.post('/login', 
     // #swagger.summary = 'registra um novo usuario' 
     // #swagger.descripition = 'autentica user com email e senha'
-    // #swagger.responses[200] = {description: ''login efetuado com sucesso}
+    // #swagger.responses[200] = {description: 'login efetuado com sucesso'}
     // #swagger.responses[401] = {description:'não autorizado'}
     login) 
     
