@@ -5,10 +5,12 @@ const { registrar,login } = require('../controllers/userController.js');
  
 // router.use (authMiddleware)
 
-router.post('/register', 
+router.post('/register',
     // #swagger.summary = 'registra novo  usuario' 
     // #swagger.description = 'cria novo usuario no sistema com nome, sobrenome, email e senha válidos'    
-    registrar)
+    registrar, (req, res) => {
+        res.send("Rota de cadastro")
+    })
 
 router.post('/login', 
     // #swagger.summary = 'registra um novo usuario' 
