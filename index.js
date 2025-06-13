@@ -13,7 +13,10 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(cors({
-   origin: "http://localhost:5173"
+   origin: "https://g-tsprint2.vercel.app/",
+   methods:["GET", "POST", "PUT", "DELETE"],
+   allowedHeaders: ["Content-type", "Authorization"]
+   
 }))
 
 app.use(express.json())
